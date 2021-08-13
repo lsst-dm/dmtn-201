@@ -50,6 +50,133 @@
 
    We describe the architectural choices and tradeoffs for the large scale object storage to be used at the USDF.
 
+
+
+Introduction
+============
+
+Through the decade's long planned operation of the Rubin telescope, we can expect in the order of 50+PB of raw images and over 600PB of other data. The challenges and decisions of its architecture, deployment, maintainence, and lifecycle are document here.
+
+
+Data Requirements and Challanges
+================================
+
+
+Data Volume, Variety and Access Patterns
+----------------------------------------
+- overview of the types of data products and size
+
+
+Challenges and Remediations
+---------------------------
+
+- highlight specific things we need to worry about
+- high level posisble solutions
+
+
+
+Architectural Motivation
+========================
+
+- repeatable: well documented
+- scalable: both management and performance
+- robust: tiering
+
+
+
+Technical Design
+================
+
+Hardware
+--------
+
+- define standard building blocks of storage
+- define performance envelopes
+- define resilience of solutions
+
+
+
+Software
+--------
+
+- overview of software solutions
+- pros/cons of ceph/minio
+- supportabilty of solutions
+
+
+
+Operational Processes
+=====================
+
+Deployment
+----------
+
+- large amounts of storage added per year
+- easy to deploy, consistent and repeatable
+
+Monitoring
+----------
+
+- hardware and software steady state and failure reporting requirements
+- environmentals and zoning?
+
+Common Tasks
+------------
+
+- what does hardware failure look like? disks, servers, racks?
+- what are the high level responsibilities and roles required?
+
+
+Life-cycle
+----------
+
+- what procedures required to replace hardware?
+
+
+
+Proof of Concept
+================
+
+Scope and what are we trying to achieve
+---------------------------------------
+
+- why kubernetes?
+- describe why minio and direct-csi
+
+
+Deployment Experience
+---------------------
+
+- deployment steps and references 
+
+
+Operational Experience
+----------------------
+
+- performance benchmarking
+- simulating failures
+
+
+
+
+
+
+
+Initial Hardware and Software Choices
+=====================================
+
+- dell xe7100 vs wd data102 vs seagate 4u100
+- what and why
+
+
+
+
+
+
+
+
+
+
 .. Add content here.
 .. Do not include the document title (it's automatically added from metadata.yaml).
 
