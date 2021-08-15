@@ -55,8 +55,10 @@
 Introduction
 ============
 
-Through the decade's long planned operation of the Rubin telescope, we can expect in the order of 50+PB of raw images and over 600PB of other data. The challenges and decisions of its architecture, deployment, maintainence, and lifecycle are document here.
-
+This document describes the evaluation process of MinIO object store for Rubin science data. It includes a brief 
+description of hardware specfication and features of MinIO. The evaluation is based on a list of criteria ranging
+from Rubin's need on storage volume, feature, integration with Rubin data processing software, etc. SLAC SCS 
+operational preferences are also part of the evaluation creteria. 
 
 Data Requirements and Challanges
 ================================
