@@ -65,7 +65,7 @@ Overview of Requirements
 ========================
 (contributors: K-T, Richard, Yee, Lance, ...)
 
-`DMTN-189 (Rubin Data Faclity Specfications) <https://dmtn-189.lsst.io/v/u-ktl-initial-spec/index.html>`_
+`DMTN-189 (Rubin Data Facility Specifications) <https://dmtn-189.lsst.io/v/u-ktl-initial-spec/index.html>`_
 specifies that in the USDF's archive enclave, object storage with S3-type interface is preferred for
 raw LSSTCam scince data, data release products (including intermediates), calibration data products. 
 Data ingestion, prompt processing, calibration, data release production, distribution to FrDF, UKDF, and
@@ -117,6 +117,8 @@ Integration with Rubin data processing pipelines
 ------------------------------------------------
 (contributors: K-T, Wei, ...)
 
+These are functional tests.
+
 Expect no major problem with prompt processing, calibration, data release production and DAC becaus they are 
 designed to interface with S3-type object storage.
 
@@ -127,6 +129,8 @@ designed to interface with S3-type object storage.
 Storage Performance
 -------------------
 (contributors: who ?)
+
+These are stress tests.
 
 Simultaneous access by several componments in Rubin data processing pipeline may happen. 
 
