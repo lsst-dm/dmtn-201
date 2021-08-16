@@ -13,11 +13,11 @@ serial_number: "201"
 doc_id: "DMTN-201"
 
 # Title of the document, without the series/serial designation
-doc_title: "USDF Object Storage Architecture and Planning"
+doc_title: "MinIO Evaluation for USDF Archive Enclave"
 
 # Author names, ordered as a list. Each author name should be formatted as 'First Last'
 authors:
-  - "Yee-Ting Li"
+  - "add your name ..."
 
 # Current document revision date, YYYY-MM-DD
 # Only set this field if you need to manually fix the revision date;

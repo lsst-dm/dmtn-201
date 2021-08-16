@@ -48,135 +48,100 @@
 
    **This technote is not yet published.**
 
-   We describe the architectural choices and tradeoffs for the large scale object storage to be used at the USDF.
+   This note describes evaluating of hardware building blocks and MinIO for Rubin's Archive Enclave.
 
 
 
 Introduction
 ============
 
-This document describes the evaluation process of MinIO object store for Rubin science data. It includes a brief 
-description of hardware specfication and features of MinIO. The evaluation is based on a list of criteria ranging
-from Rubin's need on storage volume, feature, integration with Rubin data processing software, etc. SLAC SCS 
-operational preferences are also part of the evaluation creteria. 
+This document describes the evaluation of MinIO object store and the corresponding storage hardware
+for Rubin Archive Enclave. The evaluation is based on a list of criteria ranging from Rubin's need on storage 
+volume, feature, integration with Rubin Prompt Processing/Data Release Proudction/Data Access Center, etc. 
+at USDF, etc. Integration with SLAC SDF architecture, and SDF operational preferences are also part of the 
+evaluation creteria. 
 
-Data Requirements and Challanges
-================================
-
-
-Data Volume, Variety and Access Patterns
-----------------------------------------
-- overview of the types of data products and size
-
-
-Challenges and Remediations
----------------------------
-
-- highlight specific things we need to worry about
-- high level posisble solutions
-
-
-
-Architectural Motivation
+Overview of Requirements 
 ========================
+(contributors: K-T, Richard, Yee, Lance, ...)
 
-- repeatable: well documented
-- scalable: both management and performance
-- robust: tiering
+`DMTN-189 (Rubin Data Faclity Specfications) <https://dmtn-189.lsst.io/v/u-ktl-initial-spec/index.html>`_
+specifies that in the USDF's archive enclave, object storage with S3-type interface is preferred for
+raw LSSTCam scince data, data release products (including intermediates), calibration data products. 
+Data ingestion, prompt processing, calibration, data release production, distribution to FrDF, UKDF, and
+Data Access Centers (DAC), as well as user analysis at the US DAC will all interact with this object storage. 
+The usage pattern is write-once and read-many. The requirement emphasizes scalability and low cost. 
+Low access latency is secondary compare to the cost.
 
+USDF will be hosted by SLAC Shared Data Facility (SDF). SDF has its own set of refers in storage architecture
+and service operation. This will be described in RTN-025.
 
+Evaluation Criteria and Results
+===============================
+(Define criteria first, fill in results upon completion of evaluation)
 
-Technical Design
-================
+MinIO Features 
+--------------
+(contributors: Yee)
 
-Hardware
---------
+One of the object storage technologies under evaluation is MinIO. Several features make MinIO outstanding 
+in the evaluation:
 
-- define standard building blocks of storage
-- define performance envelopes
-- define resilience of solutions
+* blah 
+* blah blah
+* backup to tape
+* security ...
 
+Hardware Candidates
+-------------------
+(contributors: Yee, Lance)
 
+SDF prefers JBOD-like storage building blocks. As a proof-of-concept, USDF is planning a 3.5PB (usable?) storage
+based on these building blocks. Candidates are:
 
-Software
---------
+* Seagate 4u100: (with integrated system board)
+* ... 
 
-- overview of software solutions
-- pros/cons of ceph/minio
-- supportabilty of solutions
+Deployment and Operation
+------------------------
+(contributors: Lance, Yee)
 
+SDF prefers in deployment and operation include:
 
+* k8s, direct-csi
+* Failure recovery: single disk failure, single node failure.  
+* Monitoring
+* Complexity and maintainability 
 
-Operational Processes
-=====================
+Integration with Rubin data processing pipelines
+------------------------------------------------
+(contributors: K-T, Wei, ...)
 
-Deployment
-----------
+Expect no major problem with prompt processing, calibration, data release production and DAC becaus they are 
+designed to interface with S3-type object storage.
 
-- large amounts of storage added per year
-- easy to deploy, consistent and repeatable
+* Evaluate integration with Panda (especially Panda Pilot)
+* Evaluate integration with data backbone. Note: the current data tranfer mechanisms are centered around 
+  Butler. It is an area that will continue to evolve. 
 
-Monitoring
-----------
+Storage Performance
+-------------------
+(contributors: who ?)
 
-- hardware and software steady state and failure reporting requirements
-- environmentals and zoning?
+Simultaneous access by several componments in Rubin data processing pipeline may happen. 
 
-Common Tasks
-------------
+Need to know write/read of bytes/sec and objects/sec from the following and evaluation storage readiness if 
+they all happen at the same time:
 
-- what does hardware failure look like? disks, servers, racks?
-- what are the high level responsibilities and roles required?
+#. Data ingestion from Summit
+#. Prompt processing
+#. Calibration
+#. Data Release Production
+#. Distribution to FrDF, UKDF and DACs
+#. User jobs at US DAC
+#. Backup to tape
 
-
-Life-cycle
-----------
-
-- what procedures required to replace hardware?
-
-
-
-Proof of Concept
-================
-
-Scope and what are we trying to achieve
----------------------------------------
-
-- why kubernetes?
-- describe why minio and direct-csi
-
-
-Deployment Experience
----------------------
-
-- deployment steps and references 
-
-
-Operational Experience
-----------------------
-
-- performance benchmarking
-- simulating failures
-
-
-
-
-
-
-
-Initial Hardware and Software Choices
-=====================================
-
-- dell xe7100 vs wd data102 vs seagate 4u100
-- what and why
-
-
-
-
-
-
-
-
+Do we need to guarantee access priorities by the first two?
 
 
 .. Add content here.
